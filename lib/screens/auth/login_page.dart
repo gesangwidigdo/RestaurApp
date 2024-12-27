@@ -3,9 +3,21 @@ import 'package:restaurapp/screens/auth/registration_page.dart';
 import 'package:restaurapp/screens/main/main_page.dart';
 import 'package:restaurapp/widgets/custom_text_field.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _passwordVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +43,17 @@ class LoginPage extends StatelessWidget {
               controller: passwordController,
               hintText: 'Enter your password (type: user123)',
               icon: Icons.lock,
-              obscureText: true,
+              obscureText: !_passwordVisible,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _passwordVisible = !_passwordVisible;
+                  });
+                },
+              ),
             ),
             const SizedBox(height: 24),
             ElevatedButton(

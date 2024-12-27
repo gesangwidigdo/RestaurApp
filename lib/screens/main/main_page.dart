@@ -14,10 +14,12 @@ class MainPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
+        child: ListView(
           children: [
             GridView.count(
               crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: const [
                 Card(
                   child: Center(
@@ -37,7 +39,7 @@ class MainPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             const SearchBarWidget(),
           ],
         ),

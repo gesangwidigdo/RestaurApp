@@ -18,8 +18,23 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         controller: _controller,
         decoration: InputDecoration(
           hintText: 'Search',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: Color(0xFFFF9800)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: Color(0xFFFF9800)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: const BorderSide(color: Color(0xFFFF9800)),
+          ),
           suffixIcon: IconButton(
-            icon: const Icon(Icons.search),
+            icon: const Icon(
+              Icons.search,
+              color: Color(0xFFFF9800),
+            ),
             onPressed: () {
               // Implement search logic here
             },

@@ -45,13 +45,15 @@ var mainTheme = ThemeData(
     fillColor: Color(0xFFF5F5F5), // Background input (abu muda)
     filled: true,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      borderRadius: BorderRadius.all(Radius.circular(50)),
       borderSide: BorderSide(color: Color(0xFFBDBDBD)), // Border input (abu)
     ),
     enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(50)),
       borderSide: BorderSide(color: Color(0xFFBDBDBD)),
     ),
     focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(50)),
       borderSide: BorderSide(color: Color(0xFFFF9800)), // Fokus input (oranye)
     ),
     labelStyle: TextStyle(color: Color(0xFF757575)), // Label teks
