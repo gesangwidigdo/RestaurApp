@@ -102,7 +102,7 @@ class _MenuItemState extends State<MenuItem> {
                       ),
                       const Spacer(),
                       const Icon(
-                        Icons.add_shopping_cart,
+                        Icons.add_box,
                         color: Color(0xFFFF9800),
                       ),
                     ],
