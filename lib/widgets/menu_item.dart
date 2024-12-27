@@ -53,9 +53,10 @@ class _MenuItemState extends State<MenuItem> {
                       Text(
                         widget.menuName,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 13,
                           fontWeight: FontWeight.bold,
                         ),
+                        softWrap: true,
                       ),
                       const Spacer(),
                       Row(
@@ -96,7 +97,7 @@ class _MenuItemState extends State<MenuItem> {
                       Text(
                         widget.price,
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 10,
                           color: Color(0xFFFF9800),
                         ),
                       ),

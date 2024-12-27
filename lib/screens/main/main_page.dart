@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:restaurapp/models/menu_list.dart';
 import 'package:restaurapp/widgets/image_card.dart';
 import 'package:restaurapp/widgets/menu_item.dart';
 import 'package:restaurapp/widgets/search_bar_widget.dart';
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,34 +61,21 @@ class MainPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/food.jpg',
-              menuName: 'Sego Goreng',
-              price: 'Rp 15.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/food.jpg',
-              menuName: 'Sego Goreng',
-              price: 'Rp 15.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/food.jpg',
-              menuName: 'Sego Goreng',
-              price: 'Rp 15.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/food.jpg',
-              menuName: 'Sego Goreng',
-              price: 'Rp 15.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/food.jpg',
-              menuName: 'Sego Goreng',
-              price: 'Rp 15.000',
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: menuList.length,
+              itemBuilder: (context, index) {
+                final menu = menuList[index];
+                if (menu.category == 'food') {
+                  return MenuItem(
+                    imagePath: menu.imagePath,
+                    menuName: menu.menuName,
+                    price: menu.price,
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 50),
             const Text(
@@ -95,36 +85,23 @@ class MainPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const MenuItem(
-              imagePath: 'lib/assets/beverages.jpg',
-              menuName: 'Vodka Pedas',
-              price: 'Rp 8.000',
-            ),
             const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/beverages.jpg',
-              menuName: 'Vodka Pedas',
-              price: 'Rp 8.000',
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: menuList.length,
+              itemBuilder: (context, index) {
+                final menu = menuList[index];
+                if (menu.category == 'beverages') {
+                  return MenuItem(
+                    imagePath: menu.imagePath,
+                    menuName: menu.menuName,
+                    price: menu.price,
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/beverages.jpg',
-              menuName: 'Vodka Pedas',
-              price: 'Rp 8.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/beverages.jpg',
-              menuName: 'Vodka Pedas',
-              price: 'Rp 8.000',
-            ),
-            const SizedBox(height: 10),
-            const MenuItem(
-              imagePath: 'lib/assets/beverages.jpg',
-              menuName: 'Vodka Pedas',
-              price: 'Rp 8.000',
-            ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
