@@ -4,8 +4,23 @@ import 'package:restaurapp/widgets/image_card.dart';
 import 'package:restaurapp/widgets/menu_item.dart';
 import 'package:restaurapp/widgets/search_bar_widget.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  List<MenuList> _filteredMenuList = menuList;
+
+  void _handleSearch(String query) {
+    setState(() {
+      _filteredMenuList = menuList.where((menu) {
+        return menu.menuName.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +58,7 @@ class MainPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            const SearchBarWidget(),
+            SearchBarWidget(onSearch: _handleSearch),
             const Padding(
               padding: EdgeInsets.only(
                 top: 20,
@@ -64,9 +79,9 @@ class MainPage extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: menuList.length,
+              itemCount: _filteredMenuList.length,
               itemBuilder: (context, index) {
-                final menu = menuList[index];
+                final menu = _filteredMenuList[index];
                 if (menu.category == 'food') {
                   return MenuItem(
                     imagePath: menu.imagePath,
@@ -89,9 +104,9 @@ class MainPage extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: menuList.length,
+              itemCount: _filteredMenuList.length,
               itemBuilder: (context, index) {
-                final menu = menuList[index];
+                final menu = _filteredMenuList[index];
                 if (menu.category == 'beverages') {
                   return MenuItem(
                     imagePath: menu.imagePath,
